@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Statystyki zadania</title>
+            </f:facet>
+            <f:metadata>
+                <f:viewParam name="zadid" value="#{ControlZadania.zadanie_id}"/>
+                
+                
+                
+            </f:metadata>
+        </h:head>
+        
+        <h:body>
+            <p:panelGrid columns="2">
+   
+ 
+    <h:outputText value="Czas trwania zadania:" />
+    <h:outputText value="#{ControlZadania.czasTrwaniaZadania(ControlZadania.wybraneZadanie)}" />
+ 
+    <h:outputText value="Data zakończenia zadania:" />
+    <h:outputText value="#{ControlZadania.dataZakonczZadania(ControlZadania.wybraneZadanie)}" />
+    
+    <h:outputText value="Koszt zadania:" />
+    <h:outputText value="#{ControlZadania.kosztZadania(ControlZadania.wybraneZadanie)}" />
+    
+    <h:outputText value="Sredni koszt sprzetu zadania:" />
+    <h:outputText value="#{ControlZadania.sredniKosztSprzetuZadania(ControlZadania.wybraneZadanie)}" />
+ 
+    <h:outputText value="Sredni koszt pracownika zadania:" />
+    <h:outputText value="#{ControlZadania.sredniKosztPracownikaZadania(ControlZadania.wybraneZadanie)}" />
+    
+    <h:outputText value="Sredni koszt czynnosci zadania:" />
+    <h:outputText value="#{ControlZadania.sredniKosztCzynnosciZadania(ControlZadania.wybraneZadanie)}" />
+</p:panelGrid>
+ 
+        </h:body>
+    </f:view>
+</html>

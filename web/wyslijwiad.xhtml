@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Wyslij wiadomosc</title>
+            </f:facet>
+            <f:metadata>
+                <f:viewParam name="nadawca" value="#{ControlWiad.nadawca}"/>
+                
+                
+                
+            </f:metadata>
+        </h:head>
+        
+        <h:body>
+            <p:outputLabel value="Adresat"/>
+            <p:inputText value="#{ControlWiad.odbiorca}"/>
+            
+            <p:outputLabel value="Tytul"/>
+            <p:inputText value="#{ControlWiad.tytul}" />
+            
+            <p:outputLabel value="Tresc"/>
+            <p:inputTextarea value="#{ControlWiad.tresc}"/>
+            
+            <p:selectOneMenu value="#{ControlWiad.odbiorca}" var="Odbiorca">
+                <f:selectItem itemLabel="Wybierz odbiorce" itemValue=""/>
+                <f:selectItems value="#{ControlWiad.mozliwiOdbiorcy}"/>
+            </p:selectOneMenu>
+                             <p:commandButton action="#{ControlWiad.wyslijWiad()}" value="Wyslij"/>
+        </h:body>
+    </f:view>
+</html>

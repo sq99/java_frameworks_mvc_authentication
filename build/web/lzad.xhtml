@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lista zadań</title>
+            </f:facet>
+        </h:head>
+        
+        <h:body>
+            <p:panel header="Zadania">
+                <h:form id="fPrac">
+                    <p:dataTable id="tabela" value="#{ControlZadania.zadania}" var="Zadanie">
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Id"/></f:facet>
+                            <h:outputText value="#{Zadanie.id}"/>
+                        </p:column>
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Nazwa"/></f:facet>
+                            <h:outputText value="#{Zadanie.nazwa}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Data rozpoczecia"/></f:facet>
+                            <h:outputText value="#{Zadanie.dataRozpoczecia}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Status"/></f:facet>
+                            <h:outputText value="#{Zadanie.status_slownie}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Lista czynnosci zadania"/></f:facet>
+                            <p:dataList value="#{Zadanie.czynnoscList}" var="Cz">
+                            #{Cz.nazwa}</p:dataList>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Sprawdz statystyki zadania"/></f:facet>
+                            <p:button value="Sprawdz" outcome="statzad">
+                                <f:param name="zadid" value ="#{Zadanie.id}"/></p:button>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Dodaj czynnosci do zadania"/></f:facet>
+                            <p:button value="Dodaj" outcome="addczynntozad">
+                                <f:param name="zadid" value ="#{Zadanie.id}"/></p:button>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Przypisz pracownników do czynnosci zadania"/></f:facet>
+                            <p:button value="Przejdź" outcome="lczynnzad">
+                                <f:param name="zadid" value ="#{Zadanie.id}"/></p:button>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Usun zadanie"/></f:facet>
+                            <p:commandButton value="Usun" action="#{DeleteZadanie.delZadanie(Zadanie)}" update="@form"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:panel>
+        </h:body>
+    </f:view>
+</html>

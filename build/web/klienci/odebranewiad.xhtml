@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lista wiadomosci</title>
+            </f:facet>
+            <f:metadata>
+                <f:viewParam name="nadawca" value="#{ControlWiad.nadawca_name}"/>
+                
+                
+                
+            </f:metadata>
+        </h:head>
+        
+        <h:body>
+            <p:panel header="Wiadomosci">
+                <h:form id="fPrzedm">
+                    <p:dataTable id="tabela" value="#{ControlWiad.odebrane}" var="Wiadomosc">
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Id"/></f:facet>
+                            <h:outputText value="#{Wiadomosc.id}"/>
+                        </p:column>
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Tytul"/></f:facet>
+                            <h:outputText value="#{Wiadomosc.tytul}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Tresc"/></f:facet>
+                            <h:outputText value="#{Wiadomosc.tresc}"/>
+                        </p:column>
+                        
+                       
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Data wyslania"/></f:facet>
+                            <h:outputText value="#{Wiadomosc.dataWyslania}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Nadawca"/></f:facet>
+                            <h:outputText value="#{Wiadomosc.nadawca.userid}"/>
+                        </p:column>
+                     
+                     
+                    </p:dataTable>
+                </h:form>
+            </p:panel>
+        </h:body>
+    </f:view>
+</html>

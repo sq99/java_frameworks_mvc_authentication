@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lista pracowników możliwych do dodania do czynności zadania</title>
+            </f:facet>
+            <f:metadata>
+                <f:viewParam name="czynnid" value="#{ControlZadania.czynnosc_id}"/>
+                
+                
+                
+            </f:metadata>
+            </h:head>
+        <h:body>
+            <p:panel header="Pracownicy">
+                <h:form id="fPrac">
+                    <p:dataTable id="tabela" value="#{ControlZadania.mozliwiPracownicy}" var="Pracownicy">
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Id"/></f:facet>
+                            <h:outputText value="#{Pracownicy.id}"/>
+                        </p:column>
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Imie"/></f:facet>
+                            <h:outputText value="#{Pracownicy.imie}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Nazwisko"/></f:facet>
+                            <h:outputText value="#{Pracownicy.nazwisko}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Stawka"/></f:facet>
+                            <h:outputText value="#{Pracownicy.stawka}"/>
+                        </p:column>
+                        
+                        <!-- tu bedzie magia! -->
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Dodaj pracowników do czynności"/></f:facet>
+                            <p:commandButton value="Dodaj" action="#{ControlZadania.addPrac2Czynn(Pracownicy)}">
+                                <f:param name="czynnid" value="#{ControlZadania.czynnosc_id}"/> 
+                            </p:commandButton>
+                        </p:column>
+                        
+                    </p:dataTable>
+                </h:form>
+            </p:panel>
+        </h:body>
+    </f:view>
+</html>

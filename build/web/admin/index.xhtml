@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+     <h:body>
+        <h1>Witaj Admin</h1>
+        <br />
+        <h:link outcome="/index" value="Wróć na stronę główną" />
+        <h:form>
+        <p:dataTable id="tabela" value="#{ControlUser.userList}" var="Users">
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Username"/></f:facet>
+                            <h:outputText value="#{Users.userid}"/>
+                        </p:column>
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Grupa"/></f:facet>
+                            <h:outputText value="#{ControlUser.getGrupaName(Users.userid)}"/>
+                        </p:column>
+        </p:dataTable>
+          
+            <p:outputLabel value="Nazwa uzytkownika"/>
+            <p:inputText value="#{ControlUser.usernameNew}"/>
+            
+            <p:outputLabel value="Haslo"/>
+            <p:inputText value="#{ControlUser.passwordNew}" />
+            
+            <p:selectOneMenu value="#{ControlUser.wybranaGrupa}" var="Grupa">
+                <f:selectItem itemLabel="Wybierz grupe" itemValue=""/>
+                <f:selectItems value="#{ControlUser.listaGrup}"/>
+            </p:selectOneMenu>
+            <p:commandButton action="#{ControlUser.addUser()}" value="Dodaj" update="@form"/>
+            
+            <p:commandButton action="#{logout.logout()}" value="Wyloguj"/>
+            
+        </h:form>
+     </h:body>
+</html>
+

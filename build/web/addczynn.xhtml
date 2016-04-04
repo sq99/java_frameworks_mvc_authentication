@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+     <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Dodawanie Czynnosci</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+        <f:metadata>
+        </f:metadata>          
+        <h:form>
+            <div>
+                <p:outputLabel value="Nazwa: "/>
+                <p:inputText value="#{AddCzynnosc.nazwaNewCzynn}"/>
+            </div>
+            <div>
+                <p:outputLabel value="Stawka[zł/min]: "/>
+                <p:inputText value="#{AddCzynnosc.stawkaNewCzynn}"/>
+            </div>
+            <div>
+                <p:outputLabel value="Czas trwania[s]: "/>
+                <p:inputText value="#{AddCzynnosc.czasTrwaniaNewCzynn}"/>
+            </div>
+            <div>
+                <p:commandButton value="Dodaj" action="#{AddCzynnosc.addCzynnosc()}"/>
+            </div>
+            <div>
+                <p:commandButton value="Lista czynnosci" action="lczynn"/>
+            </div>
+        </h:form>      
+        </h:body>
+    </f:view>
+</html>

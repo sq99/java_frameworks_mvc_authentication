@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lista czynnosci</title>
+            </f:facet>
+        </h:head>
+        
+        <h:body>
+            <p:panel header="Czynnosci">
+                <h:form id="fPrac">
+                    <p:dataTable id="tabela" value="#{ControlCzynnosc.czynnosci}" var="Czynnosc">
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Id"/></f:facet>
+                            <h:outputText value="#{Czynnosc.id}"/>
+                        </p:column>
+                    
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Nazwa"/></f:facet>
+                            <h:outputText value="#{Czynnosc.nazwa}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Czas trwania[s]"/></f:facet>
+                            <h:outputText value="#{Czynnosc.czasTrwania}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Stawka [zł/min]"/></f:facet>
+                            <h:outputText value="#{Czynnosc.stawka}"/>
+                        </p:column>
+                        
+                        
+                        <p:column>
+                            <f:facet name="header"><h:outputLabel value="Usun czynnosc"/></f:facet>
+                            <p:commandButton value="Usun" action="#{DeleteCzynnosc.delCzynnosc(Czynnosc)}" update="@form"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:panel>
+        </h:body>
+    </f:view>
+</html>
